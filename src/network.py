@@ -63,7 +63,7 @@ class Network(object):
                 self.update_mini_batch(mini_batch, eta)
             if test_data:
                 print(f"Epoch {j}: {self.evaluate(test_data)} / {n_test}")      # change 3 - convert to "f" syntax
-#                print(f"{j},{self.evaluate(test_data)/n_test}")      # change 3 - convert to "f" syntax
+#                print(f"{j},{self.evaluate(test_data)/n_test}")      			# handy CSV output for plotting
             else:
                 print(f"Epoch {j} complete")                                    # change 4 - convert to "f" syntax
 
