@@ -12,6 +12,7 @@ and omits many desirable features.
 #### Libraries
 # Standard library
 import random
+import time
 
 # Third-party libraries
 import numpy as np
@@ -54,6 +55,8 @@ class Network(object):
         if test_data: n_test = len(test_data)
         n = len(training_data)
         for j in range(epochs):                                                 # change 1 - convert xrange to range
+            train_start = time.time()                                                # start a timer for training this epoch
+            print(f"Epoch {j}: starting...", end="")
             random.shuffle(training_data)
             # before the very first epoch - i.e. no training at all, evaluate
             mini_batches = [
@@ -61,8 +64,12 @@ class Network(object):
                 for k in range(0, n, mini_batch_size)]                          # change 2 - convert xrange to range
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, eta)
+            print(f"training completed in {round(time.time()-train_start,2)}s...", end="")
             if test_data:
-                print(f"Epoch {j}: {self.evaluate(test_data)} / {n_test}")      # change 3 - convert to "f" syntax
+                test_start = time.time()
+                print(f"measuring accuracy...", end="")
+                print(f"{self.evaluate(test_data)} / {n_test}", end="")      # change 3 - convert to "f" syntax
+                print(f" in {round(time.time()-test_start,2)}s")
 #                print(f"{j},{self.evaluate(test_data)/n_test}")      			# handy CSV output for plotting
             else:
                 print(f"Epoch {j} complete")                                    # change 4 - convert to "f" syntax
