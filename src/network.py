@@ -69,7 +69,7 @@ class Network(object):
             if test_data:
                 test_start = time.time()
                 print(f"measuring accuracy...", end="")
-		accuracy = self.evaluate(test_data)
+                accuracy = self.evaluate(test_data)
                 print(f"{accuracy} / {n_test}", end="")      # change 3 - convert to "f" syntax
                 print(f" in {round(time.time()-test_start,2)}s")
 #                print(f"{j},{self.evaluate(test_data)/n_test}")      			# handy CSV output for plotting
