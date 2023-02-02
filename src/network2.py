@@ -180,7 +180,7 @@ class Network(object):
             if monitor_evaluation_accuracy:
                 accuracy = self.accuracy(evaluation_data)
                 evaluation_accuracy.append(accuracy)
-                print(f"{j},{self.accuracy(evaluation_data)/n_data}")
+                #print(f"{j},{self.accuracy(evaluation_data)/n_data}")
 #            print()
         return evaluation_cost, evaluation_accuracy, \
             training_cost, training_accuracy
