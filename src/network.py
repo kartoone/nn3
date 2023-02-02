@@ -52,7 +52,8 @@ class Network(object):
         network will be evaluated against the test data after each
         epoch, and partial progress printed out.  This is useful for
         tracking progress, but slows things down substantially."""
-        if test_data: n_test = len(test_data)
+        accuracy = 0
+	if test_data: n_test = len(test_data)
         n = len(training_data)
         for j in range(epochs):                                                 # change 1 - convert xrange to range
             train_start = time.time()                                                # start a timer for training this epoch
@@ -68,11 +69,13 @@ class Network(object):
             if test_data:
                 test_start = time.time()
                 print(f"measuring accuracy...", end="")
-                print(f"{self.evaluate(test_data)} / {n_test}", end="")      # change 3 - convert to "f" syntax
+		accuracy = self.evaluate(test_data)
+                print(f"{accuracy} / {n_test}", end="")      # change 3 - convert to "f" syntax
                 print(f" in {round(time.time()-test_start,2)}s")
 #                print(f"{j},{self.evaluate(test_data)/n_test}")      			# handy CSV output for plotting
             else:
                 print(f"Epoch {j} complete")                                    # change 4 - convert to "f" syntax
+        return accuracy
 
     def update_mini_batch(self, mini_batch, eta):
         """Update the network's weights and biases by applying
