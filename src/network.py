@@ -53,7 +53,7 @@ class Network(object):
         epoch, and partial progress printed out.  This is useful for
         tracking progress, but slows things down substantially."""
         accuracy = 0
-	if test_data: n_test = len(test_data)
+        if test_data: n_test = len(test_data)
         n = len(training_data)
         for j in range(epochs):                                                 # change 1 - convert xrange to range
             train_start = time.time()                                                # start a timer for training this epoch
