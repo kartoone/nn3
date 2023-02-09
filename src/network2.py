@@ -164,11 +164,11 @@ class Network(object):
             for mini_batch in mini_batches:
                 self.update_mini_batch(
                     mini_batch, eta, lmbda, len(training_data))
-#            print(f"Epoch {j} training complete")
+            print(f"Epoch {j} training complete")
             if monitor_training_cost:
                 cost = self.total_cost(training_data, lmbda)
                 training_cost.append(cost)
-                #print(f"Cost on training data: {cost}")
+                print(f"Cost on training data: {cost}")
             if monitor_training_accuracy:
                 accuracy = self.accuracy(training_data, convert=True)
                 training_accuracy.append(accuracy)
@@ -180,7 +180,7 @@ class Network(object):
             if monitor_evaluation_accuracy:
                 accuracy = self.accuracy(evaluation_data)
                 evaluation_accuracy.append(accuracy)
-                #print(f"{j},{self.accuracy(evaluation_data)/n_data}")
+                print(f"{j},{self.accuracy(evaluation_data)/n_data}")
 #            print()
         return evaluation_cost, evaluation_accuracy, \
             training_cost, training_accuracy
