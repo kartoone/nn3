@@ -16,7 +16,7 @@ from __future__ import print_function
 #### Libraries
 
 # Standard library
-import cPickle
+import _pickle as cPickle
 import gzip
 import os.path
 import random
@@ -30,7 +30,7 @@ if os.path.exists("../data/mnist_expanded.pkl.gz"):
     print("The expanded training set already exists.  Exiting.")
 else:
     f = gzip.open("../data/mnist.pkl.gz", 'rb')
-    training_data, validation_data, test_data = cPickle.load(f)
+    training_data, validation_data, test_data = cPickle.load(f, encoding='iso-8859-1')
     f.close()
     expanded_training_pairs = []
     j = 0 # counter
